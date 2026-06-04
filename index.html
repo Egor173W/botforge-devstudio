@@ -20,11 +20,14 @@
         section { padding: 80px 20px; max-width: 1000px; margin: auto; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .card { background: var(--card); padding: 30px; border-radius: 15px; border: 1px solid #333; }
+        .price-card { text-align: center; border: 2px solid var(--primary); }
+        .price { font-size: 2rem; font-weight: bold; margin: 15px 0; }
 
         .stat-grid { display: flex; justify-content: space-between; text-align: center; margin: 50px 0; }
         .stat-item { font-size: 2.5rem; font-weight: bold; color: var(--primary); }
 
-        footer { text-align: center; padding: 50px; border-top: 1px solid #333; color: #666; }
+        .review { background: #161616; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 4px solid var(--primary); }
+        footer { text-align: center; padding: 50px; border-top: 1px solid #333; color: #aaa; }
     </style>
 </head>
 <body>
@@ -32,9 +35,9 @@
 <header>
     <div class="logo">BotForge DevStudio</div>
     <nav>
-        <a href="#about">О нас</a>
         <a href="#services">Услуги</a>
-        <a href="#projects">Кейсы</a>
+        <a href="#pricing">Цены</a>
+        <a href="#reviews">Отзывы</a>
         <a href="https://t.me/Egorikvr">Связаться</a>
     </nav>
 </header>
@@ -45,36 +48,30 @@
     <br><a href="https://t.me/Egorikvr" class="btn">Начать проект</a>
 </section>
 
-<section id="about">
-    <h2>Почему BotForge?</h2>
-    <p>Мы специализируемся на создании инструментов, которые экономят время вашего бизнеса. Более 150 реализованных проектов позволяют нам решать задачи любой сложности: от простых Telegram-ботов до полноценных CRM-систем.</p>
-    <div class="stat-grid">
-        <div><div class="stat-item">7+</div><p>Лет опыта</p></div>
-        <div><div class="stat-item">150+</div><p>Проектов</p></div>
-        <div><div class="stat-item">24/7</div><p>Поддержка</p></div>
+<section id="pricing">
+    <h2>Тарифные планы</h2>
+    <div class="grid">
+        <div class="card price-card"><h3>Базовый</h3><div class="price">от 5 000₽</div><p>Простой бот для уведомлений или поддержки.</p></div>
+        <div class="card price-card"><h3>Стандарт</h3><div class="price">от 15 000₽</div><p>CRM-интеграция, API, база данных.</p></div>
+        <div class="card price-card"><h3>Enterprise</h3><div class="price">Индивидуально</div><p>Сложные AI-системы и масштабируемые решения.</p></div>
     </div>
 </section>
 
-<section id="services" style="background:#111;">
-    <h2>Наши услуги</h2>
-    <div class="grid">
-        <div class="card"><h3>Telegram-боты</h3><p>Разработка ботов любой сложности с интеграцией платежей и API.</p></div>
-        <div class="card"><h3>Автоматизация</h3><p>Настройка воронок продаж и интеграция с CRM-системами.</p></div>
-        <div class="card"><h3>AI-решения</h3><p>Внедрение нейросетей в ваши бизнес-процессы для ускорения работы.</p></div>
+<section id="reviews" style="background:#111;">
+    <h2>Отзывы BotFactory</h2>
+    <div class="review">
+        <p>👤 <b>MoneyJoker</b> (7636407540) | 🤖 Бот: #10 | ⭐️ <b>Оценка: 5/5</b></p>
+        <p>💬 "Самый лучший Креатор, купил бота все топ 👍 Админу яхту 😘"</p>
     </div>
-</section>
-
-<section id="projects">
-    <h2>Наши кейсы</h2>
-    <div class="grid">
-        <div class="card"><h3>Трейдинговая платформа</h3><p>Аналитический бот для обработки данных крипто-бирж в реальном времени.</p></div>
-        <div class="card"><h3>HR-система</h3><p>Бот для автоматизации найма и анкетирования кандидатов.</p></div>
-        <div class="card"><h3>Маркетплейс-интегратор</h3><p>ПО для автоматической выгрузки товаров на популярные площадки.</p></div>
+    <div class="review">
+        <p>👤 <b>Джамиль</b> (7522136077) | 🤖 Бот: #9 | ⭐️ <b>Оценка: 5/5</b></p>
+        <p>💬 "Купил инвест бота, дешевле чем в креаторе ежа и булата, советую всем этот креатор"</p>
     </div>
 </section>
 
 <footer>
     <p>© 2019-2026 BotForge DevStudio. Основатель: <a href="https://t.me/Egorikvr" style="color:var(--primary);">@Egorikvr</a></p>
+    <p style="font-size: 0.8rem; margin-top: 10px;">Качество — наш приоритет. Мы ценим доверие наших клиентов.</p>
 </footer>
 
 </body>
