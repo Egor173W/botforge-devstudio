@@ -3,38 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BotForge DevStudio | Разработка с 2019 года</title>
+    <title>BotForge DevStudio | Разработка IT-решений</title>
     <style>
         :root { --primary: #00ff9d; --bg: #0a0a0a; --card: #161616; --text: #ffffff; }
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
         
-        /* Меню */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #333; }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
-        nav a { color: #fff; text-decoration: none; margin-left: 25px; font-weight: 500; transition: 0.3s; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #333; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); text-transform: uppercase; }
+        nav a { color: #fff; text-decoration: none; margin-left: 25px; font-weight: 500; }
         nav a:hover { color: var(--primary); }
 
-        /* Герой */
-        .hero { text-align: center; padding: 100px 20px; background: linear-gradient(to bottom, #111, #0a0a0a); }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; }
-        .btn { display: inline-block; padding: 18px 40px; background: var(--primary); color: #000; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: 0.3s; }
-        .btn:hover { transform: scale(1.05); background: #fff; }
+        .hero { padding: 120px 20px; text-align: center; }
+        h1 { font-size: 3.5rem; margin-bottom: 20px; }
+        .btn { display: inline-block; padding: 18px 40px; background: var(--primary); color: #000; border-radius: 8px; text-decoration: none; font-weight: bold; }
 
-        /* Статистика (старый блок) */
-        .stats { display: flex; justify-content: space-around; padding: 60px; background: #111; margin: 40px 0; }
-        .stat-item { text-align: center; }
-        .stat-num { font-size: 3rem; font-weight: bold; color: var(--primary); }
-
-        /* Секции */
         section { padding: 80px 20px; max-width: 1000px; margin: auto; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: var(--card); padding: 30px; border-radius: 20px; border: 1px solid #333; transition: 0.3s; }
-        .card:hover { border-color: var(--primary); }
+        .card { background: var(--card); padding: 30px; border-radius: 15px; border: 1px solid #333; }
 
-        /* Отзывы */
-        .review { background: #1a1a1a; padding: 20px; border-radius: 15px; margin-bottom: 20px; border-left: 5px solid var(--primary); }
-        
-        footer { text-align: center; padding: 50px; border-top: 1px solid #333; color: #888; }
+        .stat-grid { display: flex; justify-content: space-between; text-align: center; margin: 50px 0; }
+        .stat-item { font-size: 2.5rem; font-weight: bold; color: var(--primary); }
+
+        footer { text-align: center; padding: 50px; border-top: 1px solid #333; color: #666; }
     </style>
 </head>
 <body>
@@ -42,39 +32,45 @@
 <header>
     <div class="logo">BotForge DevStudio</div>
     <nav>
-        <a href="#stats">Статистика</a>
-        <a href="#projects">Проекты</a>
-        <a href="#reviews">Отзывы</a>
-        <a href="https://t.me/Egorikvr" style="color:var(--primary);">Связаться</a>
+        <a href="#about">О нас</a>
+        <a href="#services">Услуги</a>
+        <a href="#projects">Кейсы</a>
+        <a href="https://t.me/Egorikvr">Связаться</a>
     </nav>
 </header>
 
 <section class="hero">
-    <h1>Создаем IT-решения будущего</h1>
-    <p>Профессиональная разработка ботов, автоматизация и ПО с 2019 года.</p>
-    <br><br>
-    <a href="https://t.me/Egorikvr" class="btn">Начать проект с @Egorikvr</a>
+    <h1>Профессиональная разработка ПО</h1>
+    <p>Создаем чат-ботов, автоматизируем бизнес-процессы и разрабатываем высоконагруженные системы с 2019 года.</p>
+    <br><a href="https://t.me/Egorikvr" class="btn">Начать проект</a>
 </section>
 
-<section id="stats" class="stats">
-    <div class="stat-item"><div class="stat-num">7+</div><p>Лет на рынке</p></div>
-    <div class="stat-item"><div class="stat-num">150+</div><p>Рабочих проектов</p></div>
-    <div class="stat-item"><div class="stat-num">1/3</div><p>Креаторов выбирают нас</p></div>
-</section>
-
-<section id="projects">
-    <h2 style="text-align:center; font-size: 2.5rem;">Наши проекты</h2>
-    <div class="grid">
-        <div class="card"><h3>Бот-платформа</h3><p>Система управления трафиком и автоматизации для Telegram-каналов.</p></div>
-        <div class="card"><h3>CRM-система</h3><p>Полная автоматизация продаж и учета для IT-компаний.</p></div>
-        <div class="card"><h3>AI-ассистент</h3><p>Интеграция нейросетей в бизнес-процессы для ускорения работы.</p></div>
+<section id="about">
+    <h2>Почему BotForge?</h2>
+    <p>Мы специализируемся на создании инструментов, которые экономят время вашего бизнеса. Более 150 реализованных проектов позволяют нам решать задачи любой сложности: от простых Telegram-ботов до полноценных CRM-систем.</p>
+    <div class="stat-grid">
+        <div><div class="stat-item">7+</div><p>Лет опыта</p></div>
+        <div><div class="stat-item">150+</div><p>Проектов</p></div>
+        <div><div class="stat-item">24/7</div><p>Поддержка</p></div>
     </div>
 </section>
 
-<section id="reviews">
-    <h2 style="text-align:center; font-size: 2.5rem;">Отзывы клиентов</h2>
-    <div class="review">"Лучший сервис в ТГ. Заказал бота — всё работает как часы." — <b>Алексей</b></div>
-    <div class="review">"С 2019 года работаем с ребятами, всегда на высшем уровне." — <b>Михаил</b></div>
+<section id="services" style="background:#111;">
+    <h2>Наши услуги</h2>
+    <div class="grid">
+        <div class="card"><h3>Telegram-боты</h3><p>Разработка ботов любой сложности с интеграцией платежей и API.</p></div>
+        <div class="card"><h3>Автоматизация</h3><p>Настройка воронок продаж и интеграция с CRM-системами.</p></div>
+        <div class="card"><h3>AI-решения</h3><p>Внедрение нейросетей в ваши бизнес-процессы для ускорения работы.</p></div>
+    </div>
+</section>
+
+<section id="projects">
+    <h2>Наши кейсы</h2>
+    <div class="grid">
+        <div class="card"><h3>Трейдинговая платформа</h3><p>Аналитический бот для обработки данных крипто-бирж в реальном времени.</p></div>
+        <div class="card"><h3>HR-система</h3><p>Бот для автоматизации найма и анкетирования кандидатов.</p></div>
+        <div class="card"><h3>Маркетплейс-интегратор</h3><p>ПО для автоматической выгрузки товаров на популярные площадки.</p></div>
+    </div>
 </section>
 
 <footer>
