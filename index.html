@@ -52,13 +52,11 @@
         
         .header-cta { margin-left: 30px; }
 
-        /* Мобильное меню прячется на десктопе, навигация перестраивается */
+        /* Мобильное меню */
         @media(max-width: 992px) {
             header { padding: 15px 20px; flex-wrap: wrap; }
-            nav { display: none; width: 100%; margin-top: 15px; order: 3; justify-content: space-around; background: var(--gray); padding: 10px; border-radius: 6px; }
+            nav { width: 100%; margin-top: 15px; order: 3; justify-content: space-around; background: var(--gray); padding: 10px; border-radius: 6px; display: flex; flex-wrap: wrap; }
             nav a { margin: 5px 0; font-size: 0.75rem; }
-            /* Показываем навигацию на мобилках в упрощенном виде */
-            nav { display: flex; flex-wrap: wrap; }
             .header-cta { display: none; }
         }
 
@@ -137,7 +135,7 @@
         .form-container { background: var(--dark); color: #fff; padding: 50px; border-radius: 8px; }
         .form-container h3 { font-size: 1.8rem; margin-bottom: 25px; }
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
-        .form-group input, .form-group textarea { width: 100%; padding: 15px; background: #161616; border: 1px solid #333; color: #fff; border-radius: 4px; font-size: 1px; font-size: 0.95rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 15px; background: #161616; border: 1px solid #333; color: #fff; border-radius: 4px; font-size: 0.95rem; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); outline: none; }
         .form-full { grid-column: span 2; }
         @media(max-width: 600px) {
@@ -147,10 +145,14 @@
         }
 
         /* Партнеры / Логотипы */
-        .brand-grid { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; opacity: 0.6; filter: grayscale(100%); }
+        .brand-grid { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; opacity: 0.8; }
         .brand-logo { font-size: 1.3rem; font-weight: 800; letter-spacing: 1px; color: #333; }
+        .brand-logo.highlight { color: #ff3366; font-size: 1.5rem; text-shadow: 0 0 10px rgba(255,51,102,0.2); }
 
-        /* Подвал (Footer) и Карта Сайта */
+        /* Юридические модалки */
+        .legal-block { background: #fff; border: 1px solid var(--border); padding: 30px; border-radius: 6px; margin-top: 20px; max-height: 300px; overflow-y: scroll; font-size: 0.85rem; color: #444; }
+
+        /* Подвал */
         footer { background: var(--dark); color: #999999; padding: 80px 40px 40px 40px; border-top: 1px solid #222; font-size: 0.9rem; }
         .footer-container { max-width: 1320px; margin: 0 auto; }
         .footer-grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 40px; margin-bottom: 60px; }
@@ -180,7 +182,7 @@
         </div>
         <nav>
             <a href="#about">О нас</a>
-            <a href="#products">Продукты</a>
+            <a href="#products">Наши проекты</a>
             <a href="#capabilities">Что мы можем</a>
             <a href="#cases">Кейсы</a>
             <a href="#news">Новости</a>
@@ -192,15 +194,15 @@
         </div>
     </header>
 
-    <!-- ГЛАВНЫЙ ЭКРАН -->
     <main>
+        <!-- ГЛАВНЫЙ ЭКРАН -->
         <section class="hero">
             <div class="hero-container">
                 <h1>Масштабные IT-решения и сквозная автоматизация бизнеса</h1>
                 <p>Разрабатываем отказоустойчивые программные комплексы, интегрируем искусственный интеллект полного цикла и строим технологический суверенитет для лидеров рынка.</p>
                 <div>
                     <a href="#contact-form" class="btn">Обсудить проект</a>
-                    <a href="#products" class="btn btn-outline">Выбор продукции</a>
+                    <a href="#products" class="btn btn-outline">Наши проекты</a>
                 </div>
             </div>
         </section>
@@ -208,7 +210,7 @@
         <!-- ЦИФРЫ И МАСШТАБ (О НАС) -->
         <section id="about">
             <h2 class="section-title">Масштаб экосистемы</h2>
-            <div class="section-desc">7 лет на рынке проектирования архитектурных IT-решений, стабильная инфраструктура 24/7 и лидирующие позиции в отрасли.</div>
+            <div class="section-desc">7 лет на рынке проектирования архитектурных IT-решений, стабильная распределенная инфраструктура 24/7 и лидирующие позиции в отрасли.</div>
             
             <div class="grid-4">
                 <div class="stat-box">
@@ -234,7 +236,7 @@
         <section class="section-bg">
             <div style="max-width: 1320px; margin: 0 auto;">
                 <h2 class="section-title">Наша история</h2>
-                <div class="section-desc">Путь от локальной студии автоматизации до крупного системного интегратора.</div>
+                <div class="section-desc">Путь от локальной студии автоматизации до крупного распределенного системного интегратора.</div>
                 
                 <div class="grid-2">
                     <div class="card card-flat">
@@ -243,47 +245,32 @@
                     </div>
                     <div class="card card-flat">
                         <h3>2022 — Масштабирование систем</h3>
-                        <p>Переход на enterprise-рынок разработки ПО, формирование команд Python- и Node.js-инженеров. Получение ключевых лицензий и аккредитаций, запуск продуктового направления.</p>
+                        <p>Переход на enterprise-рынок разработки ПО, формирование удаленных распределенных команд инженеров высшей квалификации. Получение ключевых лицензий, аккредитаций и масштабирование продуктового стека.</p>
                     </div>
                     <div class="card card-flat" style="grid-column: span 2;">
                         <h3>2024–2026 — Эпоха AI и Собственные Продукты</h3>
-                        <p>Внедрение LLM, построение собственных RAG-систем интеллектуального анализа данных. Разработка флагманской платформы-конструктора BotFactory Creator, которой пользуются тысячи клиентов по всей стране. Закрепление позиций в ТОП-рейтингах.</p>
+                        <p>Внедрение LLM, построение собственных высокопроизводительных систем интеллектуального анализа данных. Разработка флагманской платформы-конструктора BotFactory Creator, которой пользуются тысячи клиентов по всей стране. Закрепление позиций в ТОП-рейтингах интеграторов.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ПРОДУКТЫ -->
+        <!-- НАШИ ПРОЕКТЫ (ОБНОВЛЕННЫЙ РАЗДЕЛ) -->
         <section id="products">
-            <h2 class="section-title">Продуктовая линейка</h2>
-            <div class="section-desc">Готовые программные комплексы и платформы для форсированного роста вашего бизнеса.</div>
+            <h2 class="section-title">Наши проекты</h2>
+            <div class="section-desc">Действующие программные комплексы и платформы разработки BotForge Group.</div>
             
-            <div class="grid-3">
-                <div class="card">
-                    <div>
-                        <div style="font-weight: 900; color: var(--primary-dark); font-size: 1.2rem; margin-bottom: 10px;">📦 Флагман</div>
+            <div class="grid-3" style="grid-template-columns: 1fr;">
+                <div class="card" style="flex-direction: row; align-items: center; gap: 40px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 280px;">
+                        <div style="font-weight: 900; color: var(--primary-dark); font-size: 1.2rem; margin-bottom: 10px;">📦 Флагманский конструктор</div>
                         <h3>BotFactory Creator</h3>
-                        <p>Масштабируемый многофункциональный конструктор для автоматизации процессов любой сложности и бесшовного подключения шлюзов оплат.</p>
+                        <p>Масштабируемый многофункциональный конструктор для автоматизации процессов любой сложности, проектирования гибкой бизнес-логики и бесшовного подключения платежных шлюзов напрямую внутри мессенджеров.</p>
+                        <p>Официальный адрес проекта: <a href="https://t.me/BotFactory_Creator_Bot" target="_blank" style="color: var(--primary-dark); font-weight: bold; text-decoration: none;">@BotFactory_Creator_Bot</a></p>
                     </div>
-                    <a href="https://t.me/BotFactory_Creator_Bot" target="_blank" class="btn" style="width: 100%; text-align: center;">Запустить в Telegram</a>
-                </div>
-                
-                <div class="card">
                     <div>
-                        <div style="font-weight: 900; color: #333; font-size: 1.2rem; margin-bottom: 10px;">🤖 AI Agent</div>
-                        <h3>Инвест Бот Эдишн</h3>
-                        <p>Автоматизированная интеллектуальная система управления заявками инвесторов и лидогенерации с динамическими конфигами.</p>
+                        <a href="https://t.me/BotFactory_Creator_Bot" target="_blank" class="btn">Запустить проект в TG</a>
                     </div>
-                    <span style="color: var(--text-muted); font-size: 0.85rem; font-weight: bold;">Доступно для Enterprise</span>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div style="font-weight: 900; color: #333; font-size: 1.2rem; margin-bottom: 10px;">🔗 Реф Система</div>
-                        <h3>Партнёрский Паир Бот</h3>
-                        <p>Профессиональный модуль вирального маркетинга, реферальных сетей и прозрачного трекинга трафика внутри мессенджеров.</p>
-                    </div>
-                    <span style="color: var(--text-muted); font-size: 0.85rem; font-weight: bold;">Включено в Стек</span>
                 </div>
             </div>
         </section>
@@ -292,16 +279,16 @@
         <section class="section-bg" id="capabilities">
             <div style="max-width: 1320px; margin: 0 auto;">
                 <h2 class="section-title">Что мы можем</h2>
-                <div class="section-desc">Комплекс сквозных IT-компетенций и решений, закрывающих любые цифровые боли заказчика.</div>
+                <div class="section-desc">Комплекс сквозных IT-компетенций и высоконагруженных решений, закрывающих любые цифровые боли заказчика.</div>
                 
                 <div class="grid-3">
                     <div class="card card-flat">
                         <h4>Разработка Telegram Enterprise</h4>
-                        <p>Создание отказоустойчивых высоконагруженных ботов (Python/Aiogram, Node.js). Архитектура очередей, интеграция баз данных PostgreSQL/Redis. Срок: от 5 дней. Цена: от 5 000₽.</p>
+                        <p>Создание отказоустойчивых высоконагруженных ботов (Python/Aiogram, Node.js). Архитектура очередей, интеграция распределенных баз данных PostgreSQL/Redis. Срок: от 5 дней. Цена: от 5 000₽.</p>
                     </div>
                     <div class="card card-flat">
                         <h4>Интеграция ИИ полного цикла</h4>
-                        <p>Внедрение моделей семейства GPT-4, кастомизация под внутренние регламенты компании (RAG), автоматическая консультация клиентов 24/7. Срок: от 10 дней.</p>
+                        <p>Внедрение моделей семейства GPT, кастомизация под внутренние регламенты компании (RAG), автоматическая консультация клиентов 24/7. Срок: от 10 дней.</p>
                     </div>
                     <div class="card card-flat">
                         <h4>Автоматизация и CRM</h4>
@@ -323,7 +310,7 @@
                         <h3 style="font-size: 2rem; margin-top: 10px;">Оптимизация корпоративного конвейера разработки ботов</h3>
                         <p><b>Задача:</b> Создать отказоустойчивый визуальный и программный конструктор логических цепочек, чтобы сократить издержки на производство типовых ботов.<br><br>
                         <b>Решение:</b> Инженерами BotForge под руководством Егора Утренникова был спроектирован масштабируемый движок облачных вычислений с модульным конструктором.<br><br>
-                        <b>Результат:</b> Время развёртывания инфраструктуры снижено на 40%. Система обработала миллионы транзакций.</p>
+                        <b>Результат:</b> Время развёртывания инфраструктуры снижено на 40%. Система успешно обрабатывает транзакции.</p>
                         <a href="https://t.me/BotFactory_Creator_Bot" class="btn" style="padding: 12px 25px;">Смотреть проект</a>
                     </div>
                     <div style="text-align: center;">
@@ -333,7 +320,7 @@
             </div>
         </section>
 
-        <!-- ОТЗЫВЫ -->
+        <!-- ОТЗЫВЫ (СОХРАНЕНЫ ВСЕ ТРИ) -->
         <section class="section-bg">
             <div style="max-width: 1320px; margin: 0 auto;">
                 <h2 class="section-title">Кто нам доверяет</h2>
@@ -356,36 +343,36 @@
             </div>
         </section>
 
-        <!-- ПАРТНЕРЫ И СПОНСОРЫ -->
+        <!-- ПАРТНЕРЫ И СПОНСОРЫ (ОБНОВЛЕННЫЙ СПИСОК) -->
         <section>
             <h2 class="section-title">Партнёры и альянсы</h2>
             <div class="brand-grid">
+                <div class="brand-logo highlight">ЗАРАБОТОК С АФОНЕЙ</div>
                 <div class="brand-logo">T-BANK API</div>
                 <div class="brand-logo">SBER BUSINESS</div>
-                <div class="brand-logo">TG ENTERPRISE</div>
                 <div class="brand-logo">YANDEX CLOUD</div>
             </div>
         </section>
 
-        <!-- НОВОСТИ -->
+        <!-- НОВОСТИ (С ОБНОВЛЕННЫМ ТЕКСТОМ) -->
         <section class="section-bg" id="news">
             <div style="max-width: 1320px; margin: 0 auto;">
                 <h2 class="section-title">Пресс-центр и Новости</h2>
                 <div class="grid-3">
                     <div class="card">
                         <span style="font-size: 0.8rem; color: var(--text-muted);">Июнь 2026</span>
-                        <h3 style="margin-top: 10px;">BotForge Group расширяет штат ИИ-архитекторов</h3>
-                        <p>В связи с ростом спроса на корпоративные RAG-системы, мы увеличиваем департамент нейросетевых интеграций.</p>
+                        <h3 style="margin-top: 10px;">Глобальное обновление ядра</h3>
+                        <p>Добавлены сквозные аналитические дашборды и улучшена интеграция платежных систем.</p>
                     </div>
                     <div class="card">
                         <span style="font-size: 0.8rem; color: var(--text-muted);">Май 2026</span>
-                        <h3 style="margin-top: 10px;">Обновление BotFactory Creator v4.2</h3>
-                        <p>Добавлены сквозные аналитические дашборды и улучшена интеграция быстрых выплат по Системе Быстрых Платежей (СБП).</p>
+                        <h3 style="margin-top: 10px;">BotForge Group расширяет штат ИИ-архитекторов</h3>
+                        <p>В связи с колоссальным ростом спроса на корпоративные RAG-системы, увеличивается департамент нейросетевых интеграций.</p>
                     </div>
                     <div class="card">
                         <span style="font-size: 0.8rem; color: var(--text-muted);">Март 2026</span>
                         <h3 style="margin-top: 10px;">Вхождение в индустриальные топы</h3>
-                        <p>Аналитическое агентство подтвердило статус BotForge как стабильного и надёжного партнера со временем аптайма систем 24/7.</p>
+                        <p>Ведущие аналитические агентства подтвердили статус BotForge как самого стабильного и надежного партнера 24/7.</p>
                     </div>
                 </div>
             </div>
@@ -394,22 +381,22 @@
         <!-- КАРЬЕРА / ВАКАНСИИ -->
         <section id="career">
             <h2 class="section-title">Нанять / Карьера</h2>
-            <div class="section-desc">Присоединяйтесь к нашей команде лидеров. Мы создаём будущее ИИ-интеграций.</div>
+            <div class="section-desc">Присоединяйтесь к нашей распределенной команде лидеров. Мы создаём будущее ИИ-интеграций.</div>
             
             <div class="vacancy-item">
                 <div class="vacancy-info">
                     <h4>Senior Python Developer (Aiogram / FastAPI)</h4>
                     <p>Опыт от 5 лет, знание архитектуры баз данных, асинхронности и очередей.</p>
                 </div>
-                <a href="mailto:hr@botforge.dev" class="btn" style="padding: 10px 20px; font-size: 0.75rem;">Откликнуться</a>
+                <a href="mailto:botforgeof@gmail.com" class="btn" style="padding: 10px 20px; font-size: 0.75rem;">Откликнуться</a>
             </div>
 
             <div class="vacancy-item">
                 <div class="vacancy-info">
                     <h4>Middle/Senior Node.js Backend Engineer</h4>
-                    <p>Разработка распределённой логики для конструктора BotFactory Creator.</p>
+                    <p>Разработка распределённой масштабируемой логики для конструктора BotFactory.</p>
                 </div>
-                <a href="mailto:hr@botforge.dev" class="btn" style="padding: 10px 20px; font-size: 0.75rem;">Откликнуться</a>
+                <a href="mailto:botforgeof@gmail.com" class="btn" style="padding: 10px 20px; font-size: 0.75rem;">Откликнуться</a>
             </div>
         </section>
 
@@ -435,17 +422,49 @@
                 </form>
             </div>
         </section>
+
+        <!-- ЮРИДИЧЕСКИЕ ДОКУМЕНТЫ (ПОЛНЫЙ РЕАЛЬНЫЙ ТЕКСТ) -->
+        <section style="background: #fafafa; border-top: 1px solid var(--border);">
+            <h2 class="section-title">Правовая информация</h2>
+            <p class="section-desc">Официальные соглашения и документы в соответствии с требованиями законодательства РФ (152-ФЗ).</p>
+            
+            <div class="grid-2">
+                <div>
+                    <h4>Политика конфиденциальности (152-ФЗ)</h4>
+                    <div class="legal-block">
+                        <h5>1. Общие положения</h5>
+                        <p>Настоящая Политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006. №152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению безопасности персональных данных, предпринимаемые ИП Утренников Е.А.</p>
+                        <h5>2. Оператор обрабатывает следующие данные</h5>
+                        <p>Электронный адрес пользователя, имя, фамилия, отчество, номера телефонов, ссылки на аккаунты в мессенджерах. Все данные собираются исключительно через формы обратной связи на сайте.</p>
+                        <h5>3. Цели обработки</h5>
+                        <p>Цель обработки персональных данных — информирование Пользователя посредством отправки электронных писем; предоставление доступа Пользователю к сервисам, информации и материалам, содержащимся на веб-сайте; уточнение деталей IT-проектов.</p>
+                    </div>
+                </div>
+                <div>
+                    <h4>Пользовательское соглашение</h4>
+                    <div class="legal-block">
+                        <h5>1. Термины и определения</h5>
+                        <p>В настоящем Соглашении, если из контекста не следует иное, нижеприведенные термины имеют следующие значения: «Сайт» — интернет-ресурс BotForge. «Пользователь» — любое физическое или юридическое лицо, осуществляющее доступ к Сайту.</p>
+                        <h5>2. Предмет соглашения</h5>
+                        <p>Использование материалов и сервисов Сайта регулируется нормами действующего законодательства Российской Федерации. Пользователь вправе знакомиться с продуктовой линейкой, оставлять заявки на аудит.</p>
+                        <h5>3. Ограничение ответственности</h5>
+                        <p>Администрация сайта не несет ответственности за любые убытки, возникшие вследствие использования или невозможности использования сервисов или конструктора сторонними лицами.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- ПОДВАЛ / КАРТА САЙТА / ИНФОРМАЦИЯ / ЮР. ДАННЫЕ -->
+    <!-- ПОДВАЛ / КАРТА САЙТА / ОФИС ОНЛАЙН -->
     <footer id="contacts">
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="logo" style="color: #fff; margin-bottom: 20px;">BOT<span>FORGE</span></div>
                     <p style="font-size: 0.85rem; margin-bottom: 20px;">Группа IT-компаний полного цикла автоматизации процессов.</p>
-                    <p>Центральный офис: РФ, г. Москва, Пресненская наб. 12</p>
-                    <p>Официальная почта: <a href="mailto:contact@botforge.dev" style="color: var(--primary);">contact@botforge.dev</a></p>
+                    <p><b>Формат работы:</b> Распределенный международный Online-офис (Полная удаленная инфраструктура)</p>
+                    <p>Создатель компании: <a href="https://t.me/Egorikvr" target="_blank" style="color: var(--primary); text-decoration: none;">@Egorikvr (Telegram)</a></p>
+                    <p>Официальная почта: <a href="mailto:botforgeof@gmail.com" style="color: var(--primary);">botforgeof@gmail.com</a></p>
                 </div>
                 
                 <!-- КАРТА САЙТА -->
@@ -453,7 +472,7 @@
                     <h4>Карта сайта</h4>
                     <ul>
                         <li><a href="#about">О компании</a></li>
-                        <li><a href="#products">Продукты и решения</a></li>
+                        <li><a href="#products">Наши проекты</a></li>
                         <li><a href="#capabilities">Возможности</a></li>
                         <li><a href="#cases">Наши кейсы</a></li>
                         <li><a href="#career">Карьера и Вакансии</a></li>
@@ -465,7 +484,6 @@
                     <h4>Решения</h4>
                     <ul>
                         <li><a href="https://t.me/BotFactory_Creator_Bot" target="_blank">BotFactory Creator</a></li>
-                        <li><a href="#products">Инвест Системы</a></li>
                         <li><a href="#capabilities">Интеграция ИИ</a></li>
                         <li><a href="#about">История успеха</a></li>
                     </ul>
@@ -475,9 +493,9 @@
                 <div class="footer-col">
                     <h4>Информация</h4>
                     <ul>
-                        <li><a href="#">Политика конфиденциальности (152-ФЗ)</a></li>
-                        <li><a href="#">Условия использования</a></li>
-                        <li><a href="#">Регламенты обработки</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="#">Пользовательское соглашение</a></li>
+                        <li><a href="#">Регламенты обработки данных</a></li>
                         <li><a href="#">Минцифры Аккредитация</a></li>
                     </ul>
                 </div>
@@ -488,7 +506,7 @@
                     <p><b>Юридические реквизиты:</b> ИП Утренников Е.А. | ИНН: 0000000000 | ОГРН: 0000000000000 | Основной ОКВЭД: 62.01 (Разработка компьютерного программного обеспечения)</p>
                 </div>
                 <div style="margin-top: 15px; width: 100%; text-align: left; font-size: 0.8rem; color: #555;">
-                    © 2019-2026 Группа компаний BotForge. Все права защищены. Круглосуточный мониторинг инфраструктуры 24/7.
+                    © 2019-2026 Группа компаний BotForge. Все права защищены. Бесперебойный круглосуточный мониторинг распределенных серверов 24/7.
                 </div>
             </div>
         </div>
