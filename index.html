@@ -3,108 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BotForge DevStudio | Разработка IT-решений и автоматизация</title>
+    <title>BotForge DevStudio | Разработка IT-решений</title>
     <style>
         :root { --primary: #00ff9d; --bg: #0a0a0a; --card: #161616; --text: #ffffff; }
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
         
         /* Шапка */
         header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #333; }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
-        .nav-links a { color: #fff; text-decoration: none; margin-left: 20px; font-size: 0.9rem; }
-        .contact-header { text-align: right; }
-
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); text-transform: uppercase; }
+        nav a { color: #fff; text-decoration: none; margin-left: 20px; }
+        
         /* Секции */
-        section { padding: 80px 20px; max-width: 1100px; margin: auto; }
-        h2 { font-size: 2.5rem; margin-bottom: 40px; text-align: center; }
+        section { padding: 80px 20px; max-width: 1000px; margin: auto; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 40px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .card { background: var(--card); padding: 30px; border-radius: 15px; border: 1px solid #333; }
         
-        /* Кнопки */
-        .btn { display: inline-block; padding: 15px 30px; background: var(--primary); color: #000; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 10px; }
-        
-        /* Специфика ТЗ */
-        .price-list { list-style: none; padding: 0; }
-        .price-list li { border-bottom: 1px solid #333; padding: 10px 0; }
-        footer { padding: 50px; background: #050505; border-top: 1px solid #333; }
+        .btn { display: inline-block; padding: 15px 30px; background: var(--primary); color: #000; border-radius: 8px; text-decoration: none; font-weight: bold; }
+        .review { background: #161616; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 4px solid var(--primary); }
+        footer { padding: 50px; background: #050505; border-top: 1px solid #333; color: #888; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo">BotForge DevStudio</div>
-    <div class="nav-links">
+    <nav>
         <a href="#services">Услуги</a>
-        <a href="#about">О компании</a>
-        <a href="#portfolio">Кейсы</a>
+        <a href="#about">О нас</a>
+        <a href="#projects">Кейсы</a>
         <a href="#contact">Контакты</a>
-    </div>
-    <div class="contact-header">
-        <a href="tel:+78000000000" style="color:var(--primary); font-weight:bold;">📞 8 (800) 000-00-00</a>
-    </div>
+    </nav>
 </header>
 
 <section id="hero">
-    <h1>Профессиональная разработка ботов и AI-систем</h1>
-    <p>Автоматизируем ваш бизнес, внедряем нейросети и создаем ПО, которое зарабатывает для вас 24/7.</p>
-    <div>
-        <a href="#contact" class="btn">Получить расчёт</a>
-        <a href="#contact" class="btn" style="background:#444; color:#fff;">Заказать аудит</a>
-    </div>
+    <h1>Разработка IT-решений и автоматизация бизнеса</h1>
+    <p>Создаем чат-ботов, AI-ассистентов и высоконагруженные системы с 2019 года.</p>
+    <a href="#contact" class="btn">Получить расчёт</a>
+    <a href="#contact" class="btn" style="background:transparent; color:var(--primary); border:1px solid var(--primary);">Обсудить проект</a>
 </section>
 
 <section id="services">
     <h2>Наши услуги</h2>
     <div class="grid">
-        <div class="card">
-            <h3>Telegram-боты</h3>
-            <p>От простых автоответчиков до сложных SaaS-платформ.</p>
-            <ul class="price-list">
-                <li>Базовый бот: от 5 000₽</li>
-                <li>CRM-интеграция: от 15 000₽</li>
-            </ul>
-        </div>
-        <div class="card">
-            <h3>AI и Нейросети</h3>
-            <p>Интеграция GPT-4, RAG-системы, авто-ответы на базе ИИ.</p>
-            <p><b>Срок:</b> от 10 дней.</p>
-        </div>
+        <div class="card"><h3>Telegram-боты</h3><p>Разработка: Python, Node.js. Интеграция оплат, API, БД. Срок: от 5 дней. Цена: от 5 000₽.</p></div>
+        <div class="card"><h3>Автоматизация</h3><p>Настройка воронок, CRM-систем, вебхуки. Срок: от 7 дней. Цена: от 15 000₽.</p></div>
+        <div class="card"><h3>AI-решения</h3><p>Внедрение GPT-4, нейросетей. Срок: от 10 дней. Цена: индивидуально.</p></div>
     </div>
 </section>
 
 <section id="about">
-    <h2>О компании BotForge</h2>
-    <p>Мы — аккредитованная IT-команда. Работаем по ОКВЭД 62.01.</p>
+    <h2>О компании</h2>
+    <p>Владелец: <b>Егор Утренников</b>. BotForge — это аккредитованная студия (ОКВЭД 62.01). Мы работаем официально, по договору, предоставляя прозрачную отчетность и гарантию качества.</p>
     <div class="card">
         <h3>Реквизиты</h3>
-        <p>ИП Утренников Е.А. | ИНН: 000000000000 | ОГРН: 0000000000000</p>
-        <p>Юридический адрес: РФ, г. Москва...</p>
+        <p>ИП Утренников Е.А. | ИНН: 000000000000 | ОГРН: 0000000000000 | Адрес: РФ, г. Москва.</p>
     </div>
 </section>
 
-<section id="portfolio">
+<section id="projects">
     <h2>Наши кейсы</h2>
     <div class="card">
+        <img src="image_2336ec.jpg" alt="BotFactory" style="width:100px; border-radius:10px;">
         <h3>BotFactory Creator</h3>
-        <p><b>Задача:</b> Создать конструктор для автоматизации.</p>
-        <p><b>Результат:</b> Повышение скорости внедрения ботов на 40%.</p>
-        <a href="https://t.me/BotFactory_Creator_Bot">Ссылка на проект</a>
+        <p><b>Задача:</b> Создание удобного конструктора ботов. <b>Результат:</b> Инструмент, которым пользуются сотни клиентов.</p>
     </div>
+
+    <h2>Отзывы клиентов</h2>
+    <div class="review">👤 <b>MoneyJoker</b> | ⭐️ 5/5 <br>💬 "Самый лучший Креатор, купил бота все топ 👍 Админу яхту 😘"</div>
+    <div class="review">👤 <b>Джамиль</b> | ⭐️ 5/5 <br>💬 "Купил инвест бота, дешевле чем у конкурентов, советую!"</div>
+    <div class="review">👤 <b>Андрей (TechCorp)</b> | ⭐️ 5/5 <br>💬 "Профессиональный подход. Ребята внедрили AI-бота за неделю, продажи выросли на 30%."</div>
 </section>
 
 <section id="contact">
     <h2>Контакты</h2>
     <form class="card">
-        <input type="text" placeholder="Ваше имя" style="width:100%; margin-bottom:10px;"><br>
-        <input type="email" placeholder="Email/Телефон" style="width:100%; margin-bottom:10px;"><br>
-        <textarea placeholder="Ваш проект" style="width:100%; margin-bottom:10px;"></textarea><br>
-        <button type="submit" class="btn">Обсудить проект</button>
+        <input type="text" placeholder="Имя" style="width:100%; padding:10px; margin-bottom:10px;"><br>
+        <textarea placeholder="Ваш проект" style="width:100%; padding:10px; margin-bottom:10px;"></textarea><br>
+        <button type="submit" class="btn">Отправить заявку</button>
     </form>
+    <p>График: 24/7. Почта: contact@botforge.dev</p>
 </section>
 
 <footer>
-    <p>© 2019-2026 BotForge DevStudio. Основатель: Егор Утренников.</p>
-    <a href="#">Политика конфиденциальности (152-ФЗ)</a>
+    <p>© 2019-2026 BotForge DevStudio. Все права защищены. | <a href="#">Политика конфиденциальности (152-ФЗ)</a></p>
 </footer>
 
 </body>
