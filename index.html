@@ -5,83 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BotForge | Группа технологических компаний</title>
     <style>
-        :root { --primary: #00ff9d; --bg: #ffffff; --text: #1a1a1a; --gray: #f4f4f4; }
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
+        :root { --primary: #00ff9d; --bg: #ffffff; --text: #1a1a1a; --dark: #0a0a0a; --gray: #f8f9fa; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; line-height: 1.6; }
         
-        /* Corporate Header */
-        header { padding: 20px 80px; background: #fff; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 1.8rem; font-weight: 800; color: #000; }
-        nav a { margin-left: 30px; text-decoration: none; color: #333; font-weight: 500; font-size: 0.9rem; text-transform: uppercase; }
-
-        /* Hero */
-        .hero { padding: 100px 80px; background: #0a0a0a; color: #fff; }
-        .hero h1 { font-size: 4rem; max-width: 800px; line-height: 1.1; }
-        
-        /* Content Blocks */
+        /* Layout */
+        header { padding: 20px 80px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; background: #fff; z-index: 1000; }
         section { padding: 80px 80px; max-width: 1400px; margin: auto; }
         .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .card { background: var(--gray); padding: 40px; }
-        
-        /* Stats */
-        .stats { display: flex; gap: 60px; margin: 40px 0; border-top: 2px solid var(--primary); padding-top: 40px; }
-        .stat-item { font-size: 3rem; font-weight: bold; color: var(--primary); }
-
-        /* Footer */
-        footer { padding: 80px; background: #1a1a1a; color: #999; }
+        .card { background: var(--gray); padding: 30px; border-radius: 8px; }
+        .btn { display: inline-block; padding: 15px 30px; background: var(--primary); color: #000; font-weight: bold; text-decoration: none; border-radius: 4px; }
+        footer { padding: 80px; background: var(--dark); color: #ccc; }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">BOTFORGE</div>
+    <div style="font-weight:900; font-size:1.5rem;">BOTFORGE</div>
     <nav>
-        <a href="#">Решения</a>
-        <a href="#">Экспертиза</a>
-        <a href="#">Карьера</a>
-        <a href="#">Контакты</a>
+        <a href="#about">О нас</a> | <a href="#products">Продукты</a> | <a href="#cases">Кейсы</a> | 
+        <a href="#news">Новости</a> | <a href="#career">Карьера</a> | <a href="#contact">Контакты</a>
     </nav>
 </header>
 
-<section class="hero">
-    <h1>Создаем высокотехнологичные решения для бизнеса.</h1>
-    <p>Масштабируемая разработка, AI-интеграции и автоматизация критических процессов.</p>
-    <a href="#contact" style="color:var(--primary); font-weight:bold; text-decoration:none;">ОБСУДИТЬ ПРОЕКТ →</a>
+<section style="background: var(--dark); color: #fff;">
+    <h1>Технологический лидер автоматизации</h1>
+    <p>Решения для бизнеса 24/7. 7 лет на рынке, 150+ проектов, место в ТОП-10 разработчиков.</p>
+    <a href="#contact" class="btn">Заказать аудит</a>
 </section>
 
-<section>
+<section id="stats">
     <h2>Масштаб компании</h2>
-    <div class="stats">
-        <div><div class="stat-item">7+</div><p>Лет на рынке IT-услуг</p></div>
-        <div><div class="stat-item">150+</div><p>Успешных проектов</p></div>
-        <div><div class="stat-item">24/7</div><p>Сопровождение систем</p></div>
-    </div>
-</section>
-
-<section style="background:var(--gray);">
-    <h2>Направления деятельности</h2>
     <div class="grid-4">
-        <div class="card"><h3>Telegram-боты</h3><p>Разработка enterprise-уровня.</p></div>
-        <div class="card"><h3>AI-решения</h3><p>Внедрение LLM и нейросетей.</p></div>
-        <div class="card"><h3>Автоматизация</h3><p>Интеграция CRM и воронок.</p></div>
-        <div class="card"><h3>Аналитика</h3><p>Данные в реальном времени.</p></div>
+        <div class="card"><h3>150+</h3><p>Реализованных проектов</p></div>
+        <div class="card"><h3>45</h3><p>Квалифицированных сотрудников</p></div>
+        <div class="card"><h3>12</h3><p>Собственных IT-продуктов</p></div>
+        <div class="card"><h3>ТОП-10</h3><p>В рейтинге разработчиков</p></div>
     </div>
 </section>
 
-<section id="about">
-    <h2>О руководстве</h2>
-    <p>Основатель BotForge: <b>Егор Утренников</b>. Наша стратегия — это технологический суверенитет и создание продуктов, которые меняют рынок. Наш флагманский проект: <a href="https://t.me/BotFactory_Creator_Bot">BotFactory Creator</a>.</p>
+<section id="products">
+    <h2>Наши продукты</h2>
+    <div class="card">
+        <img src="image_2336ec.jpg" width="100" style="border-radius:50%;">
+        <h3>BotFactory Creator</h3>
+        <p>Ссылка: <a href="https://t.me/BotFactory_Creator_Bot">@BotFactory_Creator_Bot</a></p>
+        <p>Ведущий конструктор ботов для автоматизации бизнеса и платежей.</p>
+    </div>
+</section>
+
+<section id="cases">
+    <h2>Кейсы и решения</h2>
+    <p>Мы решаем: AI-ответы, интеграции платежей, автоматизация CRM, уведомления.</p>
+    <div class="review-card" style="border-left:5px solid var(--primary); padding:20px; background:#f0f0f0;">
+        <p>"Продажи выросли на 30% после внедрения нашего AI-бота." — <b>Андрей, TechCorp</b></p>
+    </div>
+</section>
+
+<section id="news">
+    <h2>Новости компании</h2>
+    <ul>
+        <li>Запуск нового модуля интеграции с нейросетями GPT-4o.</li>
+        <li>BotForge вошла в ТОП-10 разработчиков ботов 2026 года.</li>
+    </ul>
+</section>
+
+<section id="career">
+    <h2>Карьера (Вакансии)</h2>
+    <p>Мы ищем талантливых разработчиков. Присылайте резюме на почту: <b>hr@botforge.dev</b></p>
+    <a href="mailto:hr@botforge.dev" class="btn">Отправить резюме</a>
+</section>
+
+<section id="contact">
+    <h2>Контакты</h2>
+    <form>
+        <input type="text" placeholder="Имя" style="width:100%; margin-bottom:10px;"><br>
+        <textarea placeholder="Ваш запрос" style="width:100%;"></textarea><br>
+        <button type="submit" class="btn" style="margin-top:10px;">Отправить заявку</button>
+    </form>
+    <div style="margin-top:40px;">
+        <p><b>Реквизиты:</b> ИП Утренников Е.А. | ИНН: 0000000000 | ОКВЭД 62.01</p>
+        <p>Юридический адрес: Москва, Пресненская наб. 12</p>
+    </div>
 </section>
 
 <footer>
-    <div style="display:flex; justify-content:space-between;">
-        <div>
-            <p>ИНН: 0000000000 | ОГРН: 0000000000000</p>
-            <p>Юридический адрес: г. Москва, Пресненская наб. 12</p>
-        </div>
-        <div>
-            <p>Политика конфиденциальности</p>
-            <p>© 2019-2026 BotForge Group</p>
-        </div>
+    <div class="grid-4">
+        <div><h4>Компания</h4><p>О нас, История, Партнеры, Спонсоры</p></div>
+        <div><h4>Карта сайта</h4><p>Продукты, Кейсы, Вакансии, Контакты</p></div>
+        <div><h4>Информациия</h4><p>Политика 152-ФЗ, Соглашение</p></div>
+        <div><h4>Связь</h4><p>contact@botforge.dev</p></div>
     </div>
 </footer>
 
