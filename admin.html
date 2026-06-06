@@ -5,97 +5,236 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Панель управления BotForge</title>
     <style>
-        body { font-family: sans-serif; background: #f4f6f9; color: #333; padding: 20px; }
-        .container { max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        h1 { font-size: 1.5rem; margin-bottom: 20px; color: #1a1a1a; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.9rem; }
-        input[type="text"], input[type="password"], textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-family: inherit; }
-        button { background: #00ff9d; color: #000; font-weight: bold; border: none; padding: 12px 20px; border-radius: 4px; cursor: pointer; width: 100%; font-size: 1rem; }
-        button:hover { background: #00cc7d; }
-        .status { margin-top: 15px; padding: 10px; border-radius: 4px; display: none; font-size: 0.9rem; }
-        .success { background: #e6f9f0; color: #1e7e34; border: 1px solid #c3e6cb; }
+        :root {
+            --primary: #00ff9d;
+            --primary-dark: #00cc7d;
+            --bg: #f4f6f9;
+            --dark: #0a0a0a;
+            --text: #333;
+            --border: #dddddd;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); padding: 20px; }
+        .container { max-width: 1000px; margin: 20px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        h1 { font-size: 1.6rem; margin-bottom: 25px; color: var(--dark); display: flex; justify-content: space-between; align-items: center; }
         
-        /* Стили для экрана логина */
-        #loginScreen { max-width: 350px; margin: 100px auto; text-align: center; }
-        #adminContent { display: none; } /* Скрыто по умолчанию */
+        /* Сетка для блоков */
+        .admin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
+        @media(max-width: 768px) { .admin-grid { grid-template-columns: 1fr; } }
+        
+        .panel-box { border: 1px solid var(--border); padding: 20px; border-radius: 6px; background: #fafafa; }
+        .panel-box h2 { font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px; color: #555; }
+        
+        /* Настройки сайта */
+        .form-group { margin-bottom: 12px; }
+        label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.85rem; }
+        input[type="text"], textarea, input[type="password"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; font-size: 0.9rem; }
+        
+        /* Кнопки */
+        button { background: var(--primary); color: #000; font-weight: bold; border: none; padding: 12px 20px; border-radius: 4px; cursor: pointer; font-size: 0.95rem; width: 100%; transition: background 0.2s; }
+        button:hover { background: var(--primary-dark); }
+        .btn-logout { background: #ff4d4d; color: white; width: auto; padding: 6px 12px; font-size: 0.8rem; }
+        .btn-logout:hover { background: #cc0000; }
+
+        /* Статистика и аналитика */
+        .stat-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px id var(--border); font-size: 0.95rem; }
+        .stat-row:last-child { border-bottom: none; }
+        .stat-val { font-weight: bold; color: var(--dark); }
+        .badge { background: #007bff; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem; }
+
+        /* Таблица лидов */
+        .leads-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.85rem; }
+        .leads-table th, .leads-table td { padding: 10px; border: 1px solid var(--border); text-align: left; }
+        .leads-table th { background: #eeeeee; }
+
+        /* Экран авторизации */
+        #loginScreen { max-width: 360px; margin: 100px auto; text-align: center; }
+        #adminContent { display: none; }
+        .status { margin-top: 15px; padding: 10px; border-radius: 4px; display: none; font-size: 0.9rem; background: #e6f9f0; color: #1e7e34; border: 1px solid #c3e6cb; }
     </style>
 </head>
 <body>
 
-<!-- ЭКРАН АВТОРИЗАЦИИ -->
+<!-- ЭКРАН ВХОДА -->
 <div class="container" id="loginScreen">
-    <h1>Вход в систему</h1>
+    <h1>Вход в панель</h1>
     <div class="form-group" style="text-align: left;">
-        <label for="adminPassword">Введите секретный пароль:</label>
+        <label for="adminPassword">Введите пароль:</label>
         <input type="password" id="adminPassword" placeholder="Пароль...">
     </div>
     <button onclick="checkPassword()">Войти</button>
     <p id="loginError" style="color: red; font-size: 0.85rem; margin-top: 10px; display: none;">Неверный пароль!</p>
 </div>
 
-<!-- ОСНОВНОЙ КОНТЕНТ АДМИНКИ -->
+<!-- ОСНОВНОЙ ЭКРАН АДМИНКИ -->
 <div class="container" id="adminContent">
-    <h1>Управление контентом BotForge</h1>
+    <h1>
+        <span>BotForge Панель управления</span>
+        <button class="btn-logout" onclick="logout()">Выйти</button>
+    </h1>
     
-    <div class="form-group">
-        <label for="heroTitle">Главный заголовок (Hero):</label>
-        <input type="text" id="heroTitle" value="Масштабные IT-решения и сквозная автоматизация бизнеса">
+    <div class="admin-grid">
+        
+        <!-- БЛОК 1: НАСТРОЙКИ САЙТА -->
+        <div class="panel-box">
+            <h2>⚙️ Настройки сайта</h2>
+            <div class="form-group">
+                <label for="heroTitle">Главный заголовок:</label>
+                <input type="text" id="heroTitle" value="Масштабные IT-решения и сквозная автоматизация бизнеса">
+            </div>
+            <div class="form-group">
+                <label for="heroDesc">Описание под заголовком:</label>
+                <textarea id="heroDesc" rows="3">Разрабатываем отказоустойчивые программные комплексы, интегрируем искусственный интеллект полного цикла и строим технологический суверенитет для лидеров рынка.</textarea>
+            </div>
+            <div class="form-group">
+                <label for="ctaButtonText">Текст кнопок (CTA):</label>
+                <input type="text" id="ctaButtonText" value="Связаться">
+            </div>
+            <button onclick="saveChanges()">Сохранить настройки</button>
+            <div id="statusMessage" class="status">Изменения успешно отправлены!</div>
+        </div>
+
+        <!-- БЛОК 2: АНАЛИТИКА И СТАТИСТИКА -->
+        <div class="panel-box">
+            <h2>📊 Аналитика и Трафик</h2>
+            <div class="stat-row">
+                <span>Просмотры сайта (за сегодня):</span>
+                <span class="stat-val" id="viewCount">142 чел.</span>
+            </div>
+            <div class="stat-row">
+                <span>Успешные конверсии:</span>
+                <span class="stat-val" style="color: #28a745;">12.4%</span>
+            </div>
+            <div class="stat-row">
+                <span>Всего заявок в базе:</span>
+                <span class="stat-val badge" id="totalLeadsBadge">3</span>
+            </div>
+            <div class="stat-row" style="margin-top: 15px; border-top: 1px dashed #ccc; padding-top: 15px;">
+                <span>Статус связи с сервером Node.js:</span>
+                <span id="serverStatus" style="font-weight: bold; color: #ffc107;">Проверка...</span>
+            </div>
+        </div>
+
     </div>
 
-    <div class="form-group">
-        <label for="heroDesc">Описание под заголовком:</label>
-        <textarea id="heroDesc" rows="4">Разрабатываем отказоустойчивые программные комплексы, интегрируем искусственный интеллект полного цикла и строим технологический суверенитет для лидеров рынка.</textarea>
+    <!-- БЛОК 3: ТАБЛИЦА СТАТИСТИКИ ЗАЯВОК (ЛИДЫ) -->
+    <div class="panel-box" style="width: 100%;">
+        <h2>📥 Последние заявки с сайта</h2>
+        <table class="leads-table">
+            <thead>
+                <tr>
+                    <th>Имя</th>
+                    <th>Контакты (Email/TG)</th>
+                    <th>Задача клиента</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody id="leadsTableBody">
+                <!-- Сюда подгружаются реальные данные, ниже дефолтный демо-список -->
+                <tr>
+                    <td><b>Андрей</b></td>
+                    <td>@techcorp_ceo</td>
+                    <td>Нужно настроить RAG нейросеть для базы документов компании</td>
+                    <td><span style="color: #28a745; font-weight: bold;">Новый</span></td>
+                </tr>
+                <tr>
+                    <td><b>Джамиль</b></td>
+                    <td>dzhamil@mail.ru</td>
+                    <td>Разработка инвест-бота в мессенджере</td>
+                    <td><span style="color: #007bff; font-weight: bold;">В работе</span></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-
-    <div class="form-group">
-        <label for="ctaButtonText">Текст главной кнопки (CTA):</label>
-        <input type="text" id="ctaButtonText" value="Связаться">
-    </div>
-
-    <button onclick="saveChanges()">Сохранить изменения</button>
-    <div id="statusMessage" class="status success">Изменения успешно сохранены локально!</div>
 </div>
 
 <script>
     const API_BASE = "http://localhost:3000/api";
-    
-    // Хэшированный в Base64 пароль "AdminForge2026" для базовой маскировки кода на GitHub
-    const SECRET_HASH = "QWRtaW5Gb3JnZTIwMjY="; 
+    const SECRET_HASH = "QWRtaW5Gb3JnZTIwMjY="; // Пароль: AdminForge2026
 
-    // Функция проверки пароля
+    // Автоматическая проверка при старте страницы
+    document.addEventListener('DOMContentLoaded', () => {
+        // Проверяем, заходил ли пользователь ранее
+        if (localStorage.getItem('isBotForgeAdmin') === 'true') {
+            showAdminPanel();
+        }
+    });
+
     function checkPassword() {
         const input = document.getElementById('adminPassword').value;
         const errorText = document.getElementById('loginError');
         
-        // Кодируем введенный текст в Base64 и сравниваем
         if (btoa(input) === SECRET_HASH) {
-            document.getElementById('loginScreen').style.display = 'none';
-            document.getElementById('adminContent').style.display = 'block';
-            loadData(); // Загружаем данные только после успешного входа
+            // Сохраняем сессию в браузере навсегда, пока сами не нажмем "Выйти"
+            localStorage.setItem('isBotForgeAdmin', 'true');
+            showAdminPanel();
         } else {
             errorText.style.display = 'block';
             document.getElementById('adminPassword').value = '';
         }
     }
 
-    // Загрузка данных с бэкенда
-    function loadData() {
+    function showAdminPanel() {
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('adminContent').style.display = 'block';
+        loadContent();
+        loadLeads();
+    }
+
+    function logout() {
+        // Очищаем сессию, теперь пароль снова спросится
+        localStorage.removeItem('isBotForgeAdmin');
+        window.location.reload();
+    }
+
+    // Загрузка текстов сайта
+    function loadContent() {
+        const statusSpan = document.getElementById('serverStatus');
+
         fetch(`${API_BASE}/content`)
             .then(res => res.json())
             .then(data => {
                 if (data.heroTitle) document.getElementById('heroTitle').value = data.heroTitle;
                 if (data.heroDesc) document.getElementById('heroDesc').value = data.heroDesc;
-            }).catch(() => console.log("Сервер не запущен"));
+                statusSpan.innerText = "Подключен 🟢";
+                statusSpan.style.color = "#28a745";
+            }).catch(() => {
+                statusSpan.innerText = "Локальный бэкенд не запущен 🔴 (Используются демо-данные)";
+                statusSpan.style.color = "#dc3545";
+            });
 
         fetch(`${API_BASE}/menu`)
             .then(res => res.json())
             .then(data => {
                 if (data.ctaButtonText) document.getElementById('ctaButtonText').value = data.ctaButtonText;
-            }).catch(() => console.log("Сервер не запущен"));
+            }).catch(() => {});
     }
 
-    // Сохранение изменений
+    // Загрузка статистики заявок (Лидов) с бэкенда Node.js
+    function loadLeads() {
+        fetch(`${API_BASE}/leads`)
+            .then(res => res.json())
+            .then(data => {
+                if (data && data.length > 0) {
+                    document.getElementById('totalLeadsBadge').innerText = data.length;
+                    const tbody = document.getElementById('leadsTableBody');
+                    tbody.innerHTML = ''; // Очищаем демо-строки
+                    
+                    data.forEach(lead => {
+                        const row = `<tr>
+                            <td><b>${lead.name || 'Нет имени'}</b></td>
+                            <td>${lead.contact || '—'}</td>
+                            <td>${lead.task || '—'}</td>
+                            <td><span style="color: #28a745; font-weight: bold;">Новый</span></td>
+                        </tr>`;
+                        tbody.innerHTML += row;
+                    });
+                }
+            })
+            .catch(() => console.log("Используется офлайн-таблица заявок"));
+    }
+
+    // Сохранение изменений в настройках сайта
     function saveChanges() {
         const heroTitle = document.getElementById('heroTitle').value;
         const heroDesc = document.getElementById('heroDesc').value;
@@ -117,7 +256,7 @@
             status.style.display = 'block';
             setTimeout(() => status.style.display = 'none', 3000);
         })
-        .catch(err => alert("Ошибка соединения с локальным сервером server.js"));
+        .catch(() => alert("Настройки не могут записаться на сервер. Проверьте запуск файла server.js на вашем ПК!"));
     }
 </script>
 
